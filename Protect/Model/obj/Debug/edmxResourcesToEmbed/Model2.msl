@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnvironmentProtectModelStoreContainer" CdmEntityContainer="EnvironmentProtectEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="poststate" ColumnName="poststate" />
+          <ScalarProperty Name="commentnum" ColumnName="commentnum" />
+          <ScalarProperty Name="likenum" ColumnName="likenum" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="postid" ColumnName="postid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostCollect">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.PostCollect">
+        <MappingFragment StoreEntitySet="PostCollect">
+          <ScalarProperty Name="collecttime" ColumnName="collecttime" />
+          <ScalarProperty Name="postid" ColumnName="postid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="collectid" ColumnName="collectid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostComment">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.PostComment">
+        <MappingFragment StoreEntitySet="PostComment">
+          <ScalarProperty Name="praisenum" ColumnName="praisenum" />
+          <ScalarProperty Name="replycontent" ColumnName="replycontent" />
+          <ScalarProperty Name="replytime" ColumnName="replytime" />
+          <ScalarProperty Name="postid" ColumnName="postid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="replyid" ColumnName="replyid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Postlike">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.Postlike">
+        <MappingFragment StoreEntitySet="Postlike">
+          <ScalarProperty Name="likestate" ColumnName="likestate" />
+          <ScalarProperty Name="postid" ColumnName="postid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="postlikeid" ColumnName="postlikeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Proc_AdmLoginByPassword" FunctionName="EnvironmentProtectModel.Store.Proc_AdmLoginByPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnvironmentProtectModel.Proc_AdmLoginByPassword_Result">
+          <ScalarProperty Name="Admid" ColumnName="Admid" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Administrator">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.Administrator">
+        <MappingFragment StoreEntitySet="Administrator">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Admid" ColumnName="Admid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Knowledge">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.Knowledge">
+        <MappingFragment StoreEntitySet="Knowledge">
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="knopicture" ColumnName="knopicture" />
+          <ScalarProperty Name="admid" ColumnName="admid" />
+          <ScalarProperty Name="sorce" ColumnName="sorce" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+          <ScalarProperty Name="knowledgecontent" ColumnName="knowledgecontent" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="knoid" ColumnName="knoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LifeType">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.LifeType">
+        <MappingFragment StoreEntitySet="LifeType">
+          <ScalarProperty Name="cover" ColumnName="cover" />
+          <ScalarProperty Name="typename" ColumnName="typename" />
+          <ScalarProperty Name="typeid" ColumnName="typeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Life">
+      <EntityTypeMapping TypeName="EnvironmentProtectModel.Life">
+        <MappingFragment StoreEntitySet="Life">
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+          <ScalarProperty Name="admid" ColumnName="admid" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+          <ScalarProperty Name="lifecontent" ColumnName="lifecontent" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="typeid" ColumnName="typeid" />
+          <ScalarProperty Name="lifeid" ColumnName="lifeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

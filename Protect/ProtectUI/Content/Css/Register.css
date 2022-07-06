@@ -1,0 +1,63 @@
+﻿.Register-box {
+   width: auto;
+   height: 800px;
+   background-image: url('../../images/zhuce/前台注册.gif');            
+   background-size: 100% 800px;
+}
+.Register{
+   position: absolute;
+   margin-left:170px;
+   margin-top:150px;
+   background:rgba(128, 128, 128, 0.34);
+   padding: 20px 50px;
+}
+.R-userid {
+   margin-top: 10px;
+   margin-left: 20px;
+   width: 300px;
+}
+.user-Register{
+   margin-top:20px;
+   text-align:center;
+}
+.button-register {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: goldenrod;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button-register span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-family: 楷体;
+}
+
+.button-register span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+  margin-top:-3px;
+}
+
+.button-register:hover span {
+  padding-right: 25px;
+}
+
+.button-register:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+

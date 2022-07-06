@@ -1,0 +1,164 @@
+﻿.yuanchuangqu{
+    width:1200px;
+    height:auto;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:150px;
+}
+.yuanchuangleft{
+    width:820px;
+    margin-top:20px;
+    float:left;
+    margin-bottom:20px;
+    background:#ffffff;
+}
+.yuanchuangright{
+    height:1185px;
+    width:353px;
+    float:right;
+    margin-top:20px;
+    background:#ffffff;
+}
+.wodeyuanchuang{
+    width:780px;
+    height:740px;
+    margin:20px;
+}
+.yuanchuangtitle{
+    width:780px;
+    height:35px;
+}
+.fabuyuanchuang{
+    width:100px;
+    height:35px;
+    float:right;
+    background:#0094ff;
+    text-align:center;
+    padding-top:7px;
+}
+.fabuyuanchuang:hover{
+    background:#ff0000;
+}
+.wode{
+    width:780px;
+    float:left;
+    background:url("../../images/luntan/title-bg.jpg");
+    margin-top:20px;
+    border-bottom: 4px solid #A69184;
+}
+.quanbu{
+    width:780px;
+    float:left;
+    background:url("../../images/luntan/title-bg.jpg");
+    border-bottom: 4px solid #A69184;
+}
+.quanbuyuanchuang{
+    width:780px;
+    margin-left:20px;
+    margin-right:20px;
+    margin:20px;
+}
+.remen{
+    width:333px;
+    height:415px;
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+}
+.remenpaihang{
+    width:333px;
+    height:360px;
+    float:left;
+}
+.remenph{
+    width: 333px;
+    height: 73px;
+    float: left;
+    border-left: 3px solid #A69184;
+    border-right: 3px solid #A69184;
+    border-bottom: 3px solid #A69184;
+    position: relative;
+    padding: 12px;
+    list-style: none;
+    color: #737373;
+    overflow: hidden;
+}
+.remenph:hover{
+    background-color:#fafafa;
+}
+.rementitle{
+    width:333px;
+    height:42px;
+    float:left;
+    padding-left: 74px;
+    background-image:url("../../images/luntan/right-title.jpg");
+    border: 3px solid #A69184;    
+}
+.rementitle h3{
+    margin: 0;
+    height: 39px;
+    overflow: hidden;
+    font-size: 25px;
+    color:#a71a1a;
+    line-height:38px;
+    padding-left:30px;
+    background:url("../../images/icon.png") no-repeat -161px -83px;
+}
+.remenname p{
+    margin: 0;
+    font-size: 12px;
+    line-height: 20px;
+    color: #B2B2B2;
+}
+.remenname h4{
+    display: block;
+    margin: 0;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #424242;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.remenimg{
+    width:48px;
+    height:48px;
+    float:left;
+    margin-left:20px;
+}
+.remenname{
+    margin-left:131px;
+}
+.remenname a{
+    text-decoration: none;
+}
+.ycbankuan{
+    width:333px;
+    height:200px;
+    float:left;
+    margin-left:10px;
+    margin-top:10px;
+}
+.ycbkxingxi{
+    width:333px;
+    border-top:4px solid #4cff00;
+    height:40px;
+    float:left;
+}
+.bankuanbangzgu{
+    width:333px;
+    height:30px;
+    float:left;
+    margin-top:10px;
+}
+.bankuaiimg{
+    background:url("../../images/luntan/ycbk.png");
+    width:324px;
+    height:525px;
+    float:left;
+    margin-left:4.5px;
+    margin-top:20px;
+}
+

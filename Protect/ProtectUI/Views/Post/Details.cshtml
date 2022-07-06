@@ -1,0 +1,184 @@
+﻿@model Model.Post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+<style>
+    /*帖子大盒子*/
+    .taolun-container {
+        font-size: 15px;
+        margin: 20px;
+        margin-left: 5%;
+        padding: 20px;
+        width: 800px;
+        background-color: white;
+        box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    }
+    /*帖子评论区*/
+    .reply-container {
+        font-size: 15px;
+        margin: 20px;
+        margin-left: 5%;
+        padding: 20px;
+        width: 800px;
+        background-color: white;
+        box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .shequ-title {
+    }
+
+    .shequ-jianjie {
+    }
+
+    .taolun-details {
+        /*background-color:red;*/
+        width: 750px;
+        padding: 20px;
+    }
+    .taolun-details p img {
+            width: 700px !important;
+            height: auto !important;
+            object-fit: cover;
+        }
+
+    /*输入评论的文本框盒子*/
+    .inputcomment{
+        padding:10px;
+    }
+    .action-btn {
+    }
+</style>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<body>
+    <div class="taolun-container">
+        <div class="taolun-title">
+            <p style="font-size:25px;font-weight:bold;color:darkslategray;">
+                &nbsp;@Model.title
+            </p>
+        </div>
+        <div class="taolun-jianjie">
+            <img src="" style="height:70px;width:70px;float:left;" alt="头像" />
+            <span>来自：<a>@Model.Users.Username</a>&nbsp;&nbsp;@Model.addtime</span>
+        </div>
+        <div class="taolun-details">
+            @Html.Raw(Model.details)
+        </div>
+        <div class="taolun-details-action">
+            <div class="action-like">
+                @{
+                    if (TempData["postlike"] == null)
+                    {
+                        <a href="#" onclick="Praise()" class="praise"><span>点赞</span></a>
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" onclick="CancelPraise()" class="praise"><span>已点赞</span></a>
+                    }
+                }
+            </div>
+            <div class="action-collect">
+                <button class="action-btn">
+                    <img src="" alt="" />
+                    <span class="action-text">收藏</span>
+                    <span class="action-num"></span>
+                </button>
+            </div>
+        </div>
+        <hr />
+        @Html.ActionLink("返回列表", "Index")
+    </div>
+    <div class="reply-container">
+        <div class="post-reply">
+            @using (Ajax.BeginForm("AddPostComment", "Post", null, new AjaxOptions
+            {
+                HttpMethod = "post",
+                Confirm = "确定评论吗？",
+                UpdateTargetId = "Div1",
+                OnSuccess = "CommentSuccess"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <input type="hidden" name="postid" value="@Model.postid" />
+                <p style="font-size:18px;font-weight:400;color:darkslategray;">&nbsp;&nbsp;你的回应</p>
+                <div class="inputcomment">
+                    <textarea name="replycontent" rows="4" cols="90" placeholder=" 输入你要回应的内容"  style="padding:10px;"></textarea>
+                    <div style=" float:right; margin-right:25px;">
+                        <button type="submit">发送</button>
+                    </div>
+                </div>
+                
+            }
+        </div>
+        <hr />
+        <div class="display-reply">
+            <p style="font-size:18px;font-weight:600;color:darkslategray;">全部回应</p>
+            <div class="Div1">
+                @{Html.RenderAction("PostComment", "Post", new { id = Model.postid });}
+            </div>
+
+        </div>
+    </div>
+
+    @*@section scripts
+        {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@
+
+    <script>
+
+        function CommentSuccess(date) {
+            if (data == "Login") {
+                alert("请先登录！");
+                window.location.href = '/Users/Login';
+            }
+            else if (data == "Fail") {
+                alert("评论失败！");
+            }
+            else {
+                $("#Div1").html(data);
+                alert("评论成功");
+            }
+        }
+    </script>
+    @*<script language="javascript">
+        function Praise() {
+            $.ajax({
+                            url:"/Users/Praise/",
+                type: "post",
+                data: {
+                                postid:@Model.postid },
+                success: function (data) {
+                                if (data == "success") {
+                                    alert("点赞成功！");
+                                    window.location.reload();
+                                }
+                                else {
+                                    alert("点赞失败")
+                                }
+                            }
+                        })
+        }
+
+                    function CancelPraise() {
+            $.ajax({
+                            url:"/Users/CancelPraise/",
+                type: "post",
+                data: {
+                                postid:@Model.postid },
+                success: function (data) {
+                                if (data == "success") {
+                                    alert("取消点赞成功！");
+                                    window.location.reload();
+                                }
+                            }
+                        })
+        }
+        </script>*@
+</body>
+
+

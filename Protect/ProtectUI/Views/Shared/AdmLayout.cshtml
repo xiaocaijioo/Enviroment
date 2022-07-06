@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>环境保护与宣传后台管理</title>
+    <link type="text/css" href="~/Content/Css/AdminLayout.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/Css/AdIconfont.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/layui-v2.5.6/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="~/Scripts/Js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Js/Admin.js"></script>
+    @RenderSection("Script", required: false)
+    <style>
+    </style>
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div style="width:100px;height:100px;padding-left:70px;padding-top:10px;">
+                <img src="~/images/bujuye/logo.png" style="width:70px;height:70px;" />
+            </div>
+             @*头部区域（可配合layui已有的水平导航）*@ 
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="#">控制台</a></li>
+                <li class="layui-nav-item">
+                    <a href="#">管理员登录记录</a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="" class="layui-nav-img" />
+                        @Session["admid"]
+                        <span class="layui-nav-more"></span>
+                    </a>
+                    <dl class="layui-nav-child" style="margin-top:-5px;">
+                        <dd><a href="#">基本资料</a></dd>
+                        <dd><a href="#">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="@Url.Action("Loginout","Adm")"><i class="iconfont icon-icon_logout nav-icon"></i><span>注销</span></a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="">
+                 @*左侧导航区域（可配合layui已有的垂直导航）*@ 
+                <div class="nav">
+                    <div class="nav-top">
+                        <div id="mini">
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="javascript:;"><i class="iconfont icon-touxiang nav-icon"></i><span st>用户管理</span><i class="iconfont icon-youjiantou nav-more"></i></a>
+                            <ul>
+                                <li>@Ajax.ActionLink("注册正常用户库", "Index", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                                <li>@Ajax.ActionLink("已冻结用户库", "Index", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:;"><span style="margin-left:10px;">文章库管理</span><i class="iconfont icon-youjiantou nav-more"></i></a>
+                            <ul>
+                                <li>@Ajax.ActionLink("系统生活方式库", "Lifes", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                                <li>@Ajax.ActionLink("系统环保知识库", "Knowledge", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                                <li>@Ajax.ActionLink("系统在线帖子库", "Posts", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:;"><i class="iconfont icon-huodong nav-icon"></i><span>管理员发布</span><i class="iconfont icon-youjiantou nav-more"></i></a>
+                            <ul>
+                                <li>@Ajax.ActionLink("发布生活方式", "AddLife", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                                <li>@Ajax.ActionLink("发布文章", "AddKnowledge", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:;"><span style="margin-left:10px;">评论管理</span><i class="iconfont icon-youjiantou nav-more"></i></a>
+                            <ul>
+                                <li>@Ajax.ActionLink("系统帖子评论库", "PostComments", "Adm", null, new AjaxOptions { UpdateTargetId = "body-content" }, new { @class = "margin-left" })</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content" class="layui-body" style="padding:0px 10px;background-color:white;">
+             @*内容主体区域*@ 
+            @RenderBody()
+        </div>
+
+        <div class="layui-footer" style="text-align:center;">
+             @*底部固定区域*@ 
+            2022 © 环境保护与宣传 - 后台管理系统
+        </div>
+    </div>
+   
+</body>
+</html>
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

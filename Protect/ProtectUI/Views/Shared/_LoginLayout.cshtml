@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+
+        /* 头部栏容器的容器 */
+        .topbar {
+            height: 60px;
+            width: 100%;
+            background-color: #191818;
+            color: #333;
+            font-size: 14px;
+            line-height: 60px;
+            position: fixed;
+            top: 0;
+
+        }
+        /*顶部字体颜色*/
+        .topbar a {
+            color: #908c8c;
+        }
+        /*头部导航设置*/
+        .topcontainer ul {
+            list-style-type: none;
+            background-color: #191818;
+        }
+
+        .topcontainer li {
+            float: left;
+            border-right: dashed;
+        }
+
+        .topcontainer li a {
+            display: block;
+            text-align: center;
+            padding: 0 14px;
+            text-decoration: none;
+        }
+        #weatherli {
+            margin-left: 250px;
+            border: none;
+        }
+         /*当鼠标悬停在导航条上的字时*/
+        .topcontainer li a:hover:not(.active) {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!--头部栏容器-->
+    <div class="topbar">
+        <!--导航条内部容器-->
+        <div class="topcontainer">
+            <!--导航连接-->
+            <div style="float:left">
+                <ul>
+                    <li>@Html.ActionLink("环境知识保护与宣传", "Index", "Home")</li>
+                    <li>@Html.ActionLink("关于我们", "About", "Home")</li>
+                    <li>@Html.ActionLink("联系 ", "Contact", "Home")</li>
+                </ul>
+            </div>
+            <!--天气展示-->
+            <div style="float:left">
+                <ul>
+                    <li style="color:white;opacity:0.7" id="weatherli">
+                        @{Html.RenderAction("Getweather", "Home");}
+                    </li>
+                </ul>
+            </div>
+            <!--注册登录-->
+            <div style="float:right">
+                <ul>
+                    <li>@Html.ActionLink("登录", "Login", "Users")</li>
+                    <li>@Html.ActionLink("注册", "Create", "Users")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

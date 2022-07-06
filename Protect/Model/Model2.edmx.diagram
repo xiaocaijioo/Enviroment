@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2cf181722ea4b869f28eb2790ac8f36" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="EnvironmentProtectModel.Users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.Post" Width="1.5" PointX="3.375" PointY="0.875" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_Post_Users" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.PostCollect" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.PostComment" Width="1.5" PointX="8.625" PointY="3.625" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.Postlike" Width="1.5" PointX="5.625" PointY="3.75" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_PostCollect_Post" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_PostComment_Post" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_Postlike_Post" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_PostCollect_Users" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_PostComment_Users" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_Postlike_Users" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.Administrator" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.Knowledge" Width="1.5" PointX="3" PointY="5.375" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_Knowledge_administrator" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.LifeType" Width="1.5" PointX="3.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EnvironmentProtectModel.Life" Width="1.5" PointX="6" PointY="6.75" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_Life_Administrator" />
+        <AssociationConnector Association="EnvironmentProtectModel.FK_Life_LIfetype" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

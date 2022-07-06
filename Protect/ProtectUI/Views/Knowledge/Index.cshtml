@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Model.Knowledge>
+
+@{
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+
+
+<style >
+    .all-cantainer{
+        width:70%;
+        margin:20px;
+        padding:30px;
+    }
+    .kno-box {
+        height: 200px;
+        border-bottom: 0.9px solid black;
+        margin-bottom: 10px;
+        display:flex;
+    }
+    .box-right{
+        width:500px;
+        margin:10px;
+        float:right
+    }
+
+</style>
+<div class="all-cantainer">
+    <div style="border-bottom:1.1px solid black; margin-bottom:20px;">
+        <p style="font-weight:500;font-size:25px;">环保知识</p>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="contant">
+            <div class="kno-box">
+                <div class="box-left" style="float:left">
+                   <img src="@item.knopicture" style="float:left;width:300px;height:180px"/> 
+                </div>
+                <div class="box-right">
+                    <p style="font-weight:300;font-size:25px;">@item.title</p>
+                    <div style="width:400px;height:40px;overflow:hidden;opacity:0.8;">@Html.Raw(@item.knowledgecontent)</div>
+                    <br />
+                    <p style="opacity:0.9;">@item.addtime| <a href=" @Url.Action("Details", "Knowledge", new { id=item.knoid })">阅读更多</a> </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<div>
+    <h2>Register</h2>
+    @using (Html.BeginForm()) { 
+        <div>
+            <span>账号</span><input name="account" type="text" value="user001"/>
+        </div>
+        <div>
+            <span>密码</span><input name="password" type="text" value="123456"/>
+        </div>
+        <div>
+            <span>邮箱</span><input name="email" type="text" value="xxq15170310092@126.com"/>
+        </div>
+        <div>
+            <input type="submit" value="注册"/>
+        </div>
+    }
+</div>

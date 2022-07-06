@@ -1,0 +1,50 @@
+﻿.FoodMenu{
+    width:1200px;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:170px;
+}
+.shicitypeshow{
+    width:1200px;
+}
+.FoodMenu .shicitypeshow .shicidaquan {
+    width: 1200px;
+    background-color:rgba(14, 159, 223, 0.88);
+}
+.FoodMenu .shicitypeshow .shicidaquan h3{
+    text-align:center;
+    font-family:"微软雅黑";
+    margin-top:10px;
+    padding-top:20px;
+}
+.FoodMenu .shicitypeshow .shicidaquan .zhonglei {
+    padding: 10px;
+}
+.FoodMenu .shicitypeshow .zhonglei .leixing {
+    overflow: hidden;
+}
+
+.FoodMenu .zhonglei .leixing a {
+    margin: 0 5px 5px 5px;
+    padding: 3px 10px;
+    color: #555;
+    float: left;
+    font-size: 16px;
+    text-decoration:none;
+}
+.FoodMenu .zhonglei .xian{
+    margin: 5px 0 5px 0;
+    border-top: 2px solid #fff;
+}
+.FoodMenu .zhonglei b {
+    float: left;
+    font-weight: 400;
+    margin-top: 3px;
+    font-size: 16px;
+}
+.FoodMenu .zhonglei .leixing .on, .FoodMenu .zhonglei .leixing a:hover {
+    background: rgba(221,59,68,.4);
+    color: #fff;
+    border-radius: 4px;
+}
+

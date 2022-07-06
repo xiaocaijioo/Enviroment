@@ -1,0 +1,75 @@
+﻿@model Model.Life
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Life</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lifecontent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lifecontent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addtime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cover)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Administrator.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrator.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LifeType.typename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LifeType.typename)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.lifeid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

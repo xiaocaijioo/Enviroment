@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#EAEAEA;
+        }
+        /* 黏性导航栏容器*/
+        .head-nav {
+            padding: 0px 0px 2px 0px;
+            height: 90px;
+            width: 100%;
+            line-height: 90px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0px;
+            z-index:3;
+            background: white;
+            border-bottom:0.5px solid rgba(0,0,0,0.2);
+            /*border: 2px solid blue*/
+        }
+        .navlogo {
+            border: 0;
+            height: 90px;
+            width: 180px;
+            margin-top: -3px;
+            overflow:hidden;
+            /*border: 2px solid red;*/
+        }
+        /*导航栏左边*/
+        .leftnav {
+            height:90px;
+            float: left;
+            display: inline-flex;
+            font-size: 16px;
+            /*border: 2px solid yellow;*/
+
+        }
+
+            .leftnav .first-nav {
+                list-style-type: none;
+                background-color: white;
+                padding: 0px;
+            }
+
+                .leftnav .first-nav li {
+                    float: left;
+                }
+
+            .leftnav li a {
+                display: block;
+                height: 90px;
+                color: #191818;
+                line-height: 90px;
+                margin-right: 30px;
+                padding-right: 15px;
+                padding-left: 15px;
+                text-decoration: none;
+            }
+                /*主题色*/
+                .leftnav li a:hover:not(.active) {
+                    color: #539469;
+                }
+        /*下拉菜单*/
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .secand-nav {
+            display: none;
+            position: absolute;
+            background-color: white;
+            text-align: center;
+            box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+        }
+
+            .secand-nav ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            .secand-nav li {
+                display: inline-block;
+                height: 50px;
+            }
+
+                .secand-nav li a {
+                    width: 100%;
+                    display: block;
+                    line-height: 50px;
+                }
+        /*当鼠标移到一级菜单时候显示二级菜单*/
+        .dropdown:hover .secand-nav {
+            display: block;
+        }
+
+        .secand-nav li:hover {
+            border-bottom: 0.5px solid;
+        }
+
+        /*导航栏右边*/
+        .rightnav {
+            background: white;
+            height: 85px;
+            margin-right: 40px;
+            float: right;
+            display: inline-flex;
+            position: absolute;
+            /*border: 2px solid green;*/
+        }
+        /*搜索输入框*/
+        .searchbox {
+            height: 40px;
+            width: 150px;
+            vertical-align: middle;
+        }
+
+        /*搜索按钮使用了bootstrap*/
+        /*.searchbtn {
+            height: 40px;
+            width: 40px;
+            vertical-align: middle;
+            border:0.5px solid #e0e0e0;
+            position: relative;
+            color: #b0b0b0;
+            background:transparent;
+        }*/
+        .rightnav .searchbtn:hover {
+            background-color: #539469;
+        }
+
+
+        /*头像下拉菜单*/
+        .action {
+            position: fixed;
+            top:15px;
+            right:7%;
+            background:#fff;
+        }
+        /*右侧头像*/
+        .action .rightpic {
+            position:relative;
+            width:60px;
+            height:60px;
+            border-radius:50%;
+            overflow:hidden;
+            cursor:pointer;
+        }
+        .pic {
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .action .meau {
+            position: absolute;
+            top: 65px;
+            line-height: 40px;
+            right: -10px;
+            padding: 10px 10px 0px 10px;
+            background: white;
+            width: 170px;
+            border-radius: 15px;
+            transition: 0.5s;
+            visibility: hidden;
+            opacity: 0;
+            border: 0.5px solid rgba(0,0,0,0.2);
+            box-shadow: 0px 6px 6px 0px rgba(0,0,0,0.2);
+        }
+        .action .meau.active{
+            visibility:visible;
+            opacity:1;
+        }
+        .action .meau::before{
+            border-top:0.5px solid rgba(0,0,0,0.2);
+            border-left:0.5px solid rgba(0,0,0,0.2);
+            content:'';
+            position:absolute;
+            top:-5px;
+            right:40px;
+            width:10px;
+            height:10px;
+            background:white;
+            transform:rotate(45deg);
+        }
+        .action .meau ul li {
+            /*background:red;*/
+            list-style:none;
+            padding:10px 20px;
+            border-bottom:1px solid rgba(0,0,0,0.05);
+            display:flex;
+            align-items:center;   
+
+        }
+        .action .meau ul li img {
+            max-width:20px;
+            max-height:20px;
+            margin-right:15px;
+            opacity:0.7;
+            transition:0.5s;
+        }
+        .action .meau ul li:hover img{
+            opacity:1;
+        }
+        .action .meau ul li a{
+            display:inline-block;
+            text-decoration:none;
+            color:black;
+            opacity:0.7;
+            font-weight:500;
+            transition:0.5s;
+        }
+        .action .meau ul li:hover a{
+            opacity:1;
+        }
+    </style>
+</head>
+<body>
+    <!--顶部标题栏-->
+    <div class="head-nav">
+        <div class="container head1">
+            <!--header左边导航-->
+            <div class="leftnav">
+                <ul class="first-nav">
+                    <li><a href="../Home/Index"><img src="~/Resources/logo.png" class="navlogo" /></a></li>
+                    <li class="dropdown">
+                        @Html.ActionLink("可持续生活", "Index", "Life")
+                        <ul class="secand-nav">
+                            <li><a href="#" style="text-align:left">时尚</a></li>
+                            <li><a href="#" style="text-align:left">饮食</a></li>
+                            <li><a href="#" style="text-align:left">其他</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("环保知识", "Index", "Knowledge")</li>
+                    <li>@Html.ActionLink("实践社区", "Index", "Post")</li>
+                    <li>@Html.ActionLink("系统公告", "Create", "Users")</li>
+                </ul>
+            </div>
+            <!--右侧搜索框-->
+            <div class="rightnav">
+                <form action="">
+                    <input type="text" placeholder="" class="searchbox" />
+                    <button type="submit" class="btn btn-success">查找</button>
+                </form>
+            </div>
+            <!--头像展示-->
+            <div class="action">
+                @{
+                    if (Session["userid"] == null)
+                    {
+                        <div class="rightpic" onclick="menuToggle();">
+                            <img src="~/Resources/登录头像.png" class="pic" />
+                        </div>
+                        <div class="meau">
+                            <ul>
+                                <li><a href="@Url.Action("Login","adm")">管理员登录</a></li>
+                                <li><a href="@Url.Action("Login","Users")">登录</a></li>
+                                <li><a href="@Url.Action("Create","Users")">首次使用？点我注册</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="rightpic" onclick="menuToggle();">
+                            <img src="~/Resources/矢量头像1.png" class="pic" />
+                        </div>
+                        <div class="meau">
+                            <ul>
+                                <li><img src="~/Resources/个人中心logo.png" alt="" /><a href="#">个人中心</a></li>
+                                <li><img src="~/Resources/我的收藏logo.png" alt="" /><a href="#">我的收藏</a></li>
+                                <li><img src="~/Resources/退出logo.png" alt="" /><a>@Ajax.ActionLink("注销", "LogOut", "Users", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "Loginout" })</a></li>
+                            </ul>
+                        </div>
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function Loginout(data) {
+            alert(data);
+            location.reload();
+        }
+        function menuToggle() {
+            const div = document.querySelector('.meau');
+            div.classList.toggle("active")
+        }
+    </script>
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

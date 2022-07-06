@@ -1,0 +1,77 @@
+﻿.Login-box {
+    width: 1519px;
+    height: 800px;
+    margin-left: 0px;
+    background-image:url('../../images/denglu/前台登录.gif');
+    background-size:cover;
+}
+.info {
+    width: 400px;
+    height: auto;
+    position: absolute;
+    margin-left: 430px;
+    margin-top: 250px;
+    background: rgba(128, 128, 128, 0.34);
+    padding: 20px 50px;
+}
+.user-name
+{
+   margin-top: 20px;
+   text-align:center;
+}
+.user-pwd{
+   margin-top: 20px;
+   text-align:center;
+}
+.user-login{
+   margin-top:15px;
+   margin-left:100px;
+}
+.login-bottom{
+   margin-top: 10px;
+   text-align:center;
+   float: left;
+   width: 270px;
+   margin-left: 20px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-family: 楷体;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+  margin-top:-3px;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

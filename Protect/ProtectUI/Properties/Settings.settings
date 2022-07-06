@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProtectUI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ProtectUI_cn_com_webxml_www_WeatherWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.webxml.com.cn/WebServices/WeatherWebService.asmx</Value>
+    </Setting>
+    <Setting Name="ProtectUI_WebReference5_SpotService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.128.129.201/SpotService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,129 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc
+@using X.PagedList.Mvc.Common
+@model IEnumerable<Model.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+<style>
+    .shequ-container {
+
+        font-size: 15px;
+        margin: 20px;
+        margin-left: 5%;
+        padding: 20px;
+        width: 65%;
+        background-color: white;
+        box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .shequ-title {
+        height:80px;
+    }
+
+    .shequ-title-logo {
+        border-radius: 8px;
+    }
+
+    .shequ-jianjie {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: oldlace;
+    }
+
+    .shequ-display {
+        padding: 20px;
+    }
+
+    .shequ-display-head {
+        margin-top: 20px;
+        height: 80px;
+        font-size: 15px;
+    }
+</style>
+<body>
+    <div class="shequ-container">
+        <div class="shequ-title">
+            <p style="font-size:25px;font-weight:bold;color:darkslategray;">
+                <img src="~/Resources/社区logo.png" style="width:80px;height:60px; " class="shequ-title-logo" />
+                &nbsp; 可持续生活方式实践社区
+            </p>
+        </div>
+        <div class="shequ-jianjie">
+            社区简介:我们都坚信应该热爱并尊重这个星球，但是我们真的为之付出过吗？气候变化、物种灭绝、贫穷，这些都是一直以来我们坏习惯的恶果。<br />
+            我们必须极大地减少我们对环境的影响，不然整个生态系统注定将崩塌。<br />
+            好消息是，我们不用彻底颠覆现有的生活方式以变得可持续，改变并培养一些习惯便足矣。<br />
+            <br>
+            本小组以生态环境保护为主题，讨论在日常生活习惯中如何与环境友好，保护关爱动植物，节约资源、减少浪费等。<br />
+            发言内容但不限于：<br />
+            1.减少一次性塑料<br />
+            2.减少外卖及网购<br />
+            3.绿色出行<br />
+            4.生态农业<br />
+            5.垃圾分类<br />
+            6.保护动植物<br />
+            7.揭穿商家的诱惑性行为<br />
+            8.环保生活感悟<br />
+            9.人与自然的关系<br />
+            10.旧物改造及再利用小妙招<br />
+            <hr style="border-top:2px dashed rgba(0,0,0,0.2)" />
+            社区规则：
+        </div>
+        <div class="shequ-display">
+            <div class="shequ-display-head">
+                <a href="#">最近讨论</a>/<a href="#">精华讨论</a>/<a href="#">最热讨论</a>
+                <button onclick="top.location.href='../Post/PublishPost'" type="button" class="btn btn-success" style="float:right">+发言</button>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>
+                        讨论
+                    </th>
+                    <th>
+                        作者
+                    </th>
+                    <th>
+                        发表时间
+                    </th>
+                    <th>评论数</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Details", "Post", new { id=item.postid })"> @Html.DisplayFor(modelItem => item.title)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.userid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.addtime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.commentnum)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            @Html.PagedListPager((IPagedList)Model, pageIndex => Url.Action("Index", "Post", new { pageIndex }),
+                new PagedListRenderOptions() 
+                {
+                    DisplayLinkToFirstPage=PagedListDisplayMode.Always,
+                    LinkToFirstPageFormat="首页",
+                    LinkToNextPageFormat="下一页",
+                    LinkToPreviousPageFormat="上一页",
+                    LinkToLastPageFormat="末页",
+                    DisplayLinkToLastPage=PagedListDisplayMode.Always,
+                    MaximumPageNumbersToDisplay=20,
+                })
+        </div>
+    </div>
+</body>
+
+

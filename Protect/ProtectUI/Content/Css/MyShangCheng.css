@@ -1,0 +1,244 @@
+﻿/*.Right-list {
+    width: 930px;
+    height: 521px;
+    background-color: #f8f8f8;
+    margin-left: 200px;
+    margin-top:35px;
+}
+.Left-list .m-Order .z-sel {
+    background-color: #c73d3d;
+    display: block;
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.Left-list {
+    width: 160px;
+    float: left;
+    margin-left:29px;
+    margin-top:225px;
+    text-align:center;
+}
+.order-list {
+    float: left;
+    width: 500px;
+    padding: 30px;
+}
+.order-list .order-ul {
+    list-style: none;
+    display: inline-block;
+    height: 30px;
+}
+.order-list .order-ul a{
+    text-decoration:none;
+}
+.order-list .order-ul .spend {
+    width: 150px;
+    border: 0.5px solid #c8c8c8;
+}
+.order-list .order-ul .data {
+    width: 220px;
+}
+.order-list .order-ul li {
+    list-style: none;
+    display: block;
+    float: left;
+}
+#check-detail {
+    cursor: pointer;
+    background-color: #ff9800;
+    border-radius: 5px;
+}
+#order-show {
+    width: 420px;
+    height: 522px;
+    background-color: aliceblue;
+    float: right;
+    border-radius: 10px;
+    OVERFLOW: SCROLL;
+}
+#Right-list3 .size {
+    display: block;
+    font-size: 19px;
+    margin-left: 35px;
+}
+#Right-list4 .table {
+    width: 77%;
+    margin: 0 auto;
+    text-align: center;
+}
+#Right-list4 .table .commentbut {
+    width: 15%;
+    margin: 0 auto;
+    line-height: 100px;
+}
+#Right-list4 .table .commentbut #update {
+    border: 1px solid black;
+    font-size: 20px;
+    border-radius: 5px;
+}
+#Right-list1 .add {
+    width: 280px;
+    height: 100px;
+    background-color: #9E9E9E;
+    margin: 10px;
+    border-radius: 20px;
+    margin-left:325px;
+}
+#Right-list1 .address-H {
+    width: 280px;
+    height: 150px;
+    float: left;
+    margin: 10px 10px;
+    border: 0.5px solid #c8c8c8;
+    border-radius: 20px;
+}
+#Right-list1 .address-H .juti {
+    height: 100px;
+    width: 215px;
+    font-size: 15px;
+}
+#Right-list1 .address-H .chaozhuo {
+    margin-left: 53px;
+    font-size: 20px;
+}
+#Right-list1 .address-H .chaozhuo a{
+   text-decoration:none;
+}
+#Right-list1 .address-H #delect {
+    display: inline-block;
+    background-color: #ff0000;
+    border-radius: 5px;
+}
+#Right-list1 .address-H #update {
+    display: inline-block;
+    background-color: #ff0000;
+    border-radius: 5px;
+}
+#Right-list1 {
+    overflow: scroll;
+}
+#Right-list3 {
+    OVERFLOW: SCROLL;
+}
+#Right-list4 {
+    OVERFLOW: SCROLL;
+}
+#Right-list5 {
+    OVERFLOW: SCROLL;
+}*/
+.Right-list {
+    width: 1000px;
+    height: 600px;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+.Left-list .m-Order .z-sel {
+    background-color: #c73d3d;
+    display: block;
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.Left-list {
+    width: 160px;
+    float: left;
+    margin-left:29px;
+    margin-top:225px;
+    text-align:center;
+}
+.order-list {
+    float: left;
+    width: 500px;
+    padding: 30px;
+}
+.order-list .order-ul {
+    list-style: none;
+    display: inline-block;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    font-family: 宋体;
+    float: left;
+}
+.order-list .order-ul a{
+    text-decoration:none;
+}
+.order-list .order-ul .spend {
+    width: 100px;
+}
+.order-list .order-ul .data {
+    width: 265px;
+}
+.order-list .order-ul li {
+    list-style: none;
+    display: block;
+    float: left;
+    height:30px;
+}
+/*#check-detail {
+    cursor: pointer;
+    background-color:#9E9E9E;
+}*/
+#order-show {
+    width: 960px;
+    height: auto;
+    float: left;
+    margin-bottom:20px;
+}
+#Right-list3 .size {
+    display: block;
+    font-size: 19px;
+    margin-left: 35px;
+}
+#Right-list4 .table {
+    width: 77%;
+    margin: 0 auto;
+    text-align: center;
+}
+#Right-list4 .table .commentbut {
+    width: 15%;
+    margin: 0 auto;
+    line-height: 100px;
+}
+#Right-list4 .table .commentbut #update {
+    border: 1px solid black;
+    font-size: 20px;
+    border-radius: 5px;
+}
+#Right-list1 .add {
+    width: 300px;
+    height: 50px;
+    background-color: #9E9E9E;
+    margin-left:325px;
+}
+#Right-list1 .address-H {
+    width: 920px;
+    height: 150px;
+    float: left;
+    margin: 10px 10px;
+    border: 0.5px solid #c8c8c8;
+    font-family: 宋体;
+}
+#Right-list1 .address-H .juti {
+    height: 110px;
+    width: 900px;
+    font-size: 18px;
+    float: left;
+    padding: 10px;
+}
+#Right-list1 .address-H .chaozhuo {
+    font-size: 15px;
+    float: right;
+    height: 30px;
+    width: 200px;
+}
+#Right-list1 .address-H .chaozhuo a{
+   text-decoration:none;
+   color:black;
+}
+

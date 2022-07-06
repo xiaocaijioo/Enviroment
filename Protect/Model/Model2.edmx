@@ -1,0 +1,714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EnvironmentProtectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="Admid" />
+          </Key>
+          <Property Name="Admid" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Knowledge">
+          <Key>
+            <PropertyRef Name="knoid" />
+          </Key>
+          <Property Name="knoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="knowledgecontent" Type="varchar(max)" Nullable="false" />
+          <Property Name="addtime" Type="date" Nullable="false" />
+          <Property Name="sorce" Type="varchar" MaxLength="100" />
+          <Property Name="admid" Type="int" Nullable="false" />
+          <Property Name="knopicture" Type="varchar(max)" />
+          <Property Name="state" Type="int" />
+        </EntityType>
+        <EntityType Name="Life">
+          <Key>
+            <PropertyRef Name="lifeid" />
+          </Key>
+          <Property Name="lifeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeid" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="lifecontent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="admid" Type="int" Nullable="false" />
+          <Property Name="cover" Type="nvarchar(max)" />
+          <Property Name="state" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LifeType">
+          <Key>
+            <PropertyRef Name="typeid" />
+          </Key>
+          <Property Name="typeid" Type="int" Nullable="false" />
+          <Property Name="typename" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="cover" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="details" Type="nvarchar(max)" />
+          <Property Name="likenum" Type="int" />
+          <Property Name="commentnum" Type="int" />
+          <Property Name="poststate" Type="int" />
+        </EntityType>
+        <EntityType Name="PostCollect">
+          <Key>
+            <PropertyRef Name="collectid" />
+          </Key>
+          <Property Name="collectid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="postid" Type="int" Nullable="false" />
+          <Property Name="collecttime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostComment">
+          <Key>
+            <PropertyRef Name="replyid" />
+          </Key>
+          <Property Name="replyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="postid" Type="int" Nullable="false" />
+          <Property Name="replytime" Type="datetime" Nullable="false" />
+          <Property Name="replycontent" Type="nvarchar(max)" />
+          <Property Name="praisenum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Postlike">
+          <Key>
+            <PropertyRef Name="postlikeid" />
+          </Key>
+          <Property Name="postlikeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="postid" Type="int" Nullable="false" />
+          <Property Name="likestate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <Association Name="FK_Knowledge_administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="Knowledge" Type="Self.Knowledge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="Admid" />
+            </Principal>
+            <Dependent Role="Knowledge">
+              <PropertyRef Name="admid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Life_Administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="Life" Type="Self.Life" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="Admid" />
+            </Principal>
+            <Dependent Role="Life">
+              <PropertyRef Name="admid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Life_LIfetype">
+          <End Role="LifeType" Type="Self.LifeType" Multiplicity="1" />
+          <End Role="Life" Type="Self.Life" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LifeType">
+              <PropertyRef Name="typeid" />
+            </Principal>
+            <Dependent Role="Life">
+              <PropertyRef Name="typeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostCollect_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostCollect" Type="Self.PostCollect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="PostCollect">
+              <PropertyRef Name="postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostCollect_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PostCollect" Type="Self.PostCollect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostCollect">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postlike_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Postlike" Type="Self.Postlike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="Postlike">
+              <PropertyRef Name="postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postlike_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Postlike" Type="Self.Postlike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Postlike">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Proc_AdmLoginByPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Admid" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="EnvironmentProtectModelStoreContainer">
+          <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Knowledge" EntityType="Self.Knowledge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Life" EntityType="Self.Life" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LifeType" EntityType="Self.LifeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostCollect" EntityType="Self.PostCollect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostComment" EntityType="Self.PostComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postlike" EntityType="Self.Postlike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Knowledge_administrator" Association="Self.FK_Knowledge_administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="Knowledge" EntitySet="Knowledge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Life_Administrator" Association="Self.FK_Life_Administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="Life" EntitySet="Life" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Life_LIfetype" Association="Self.FK_Life_LIfetype">
+            <End Role="LifeType" EntitySet="LifeType" />
+            <End Role="Life" EntitySet="Life" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_Users" Association="Self.FK_Post_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostCollect_Post" Association="Self.FK_PostCollect_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostCollect" EntitySet="PostCollect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostCollect_Users" Association="Self.FK_PostCollect_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PostCollect" EntitySet="PostCollect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Post" Association="Self.FK_PostComment_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Users" Association="Self.FK_PostComment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postlike_Post" Association="Self.FK_Postlike_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Postlike" EntitySet="Postlike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postlike_Users" Association="Self.FK_Postlike_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Postlike" EntitySet="Postlike" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnvironmentProtectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Post" Relationship="EnvironmentProtectModel.FK_Post_Users" FromRole="Users" ToRole="Post" />
+          <NavigationProperty Name="PostCollect" Relationship="EnvironmentProtectModel.FK_PostCollect_Users" FromRole="Users" ToRole="PostCollect" />
+          <NavigationProperty Name="PostComment" Relationship="EnvironmentProtectModel.FK_PostComment_Users" FromRole="Users" ToRole="PostComment" />
+          <NavigationProperty Name="Postlike" Relationship="EnvironmentProtectModel.FK_Postlike_Users" FromRole="Users" ToRole="Postlike" />
+          <Property Name="State" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="EnvironmentProtectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Post" EntityType="EnvironmentProtectModel.Post" />
+          <AssociationSet Name="FK_Post_Users" Association="EnvironmentProtectModel.FK_Post_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <EntitySet Name="PostCollect" EntityType="EnvironmentProtectModel.PostCollect" />
+          <EntitySet Name="PostComment" EntityType="EnvironmentProtectModel.PostComment" />
+          <EntitySet Name="Postlike" EntityType="EnvironmentProtectModel.Postlike" />
+          <AssociationSet Name="FK_PostCollect_Post" Association="EnvironmentProtectModel.FK_PostCollect_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostCollect" EntitySet="PostCollect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Post" Association="EnvironmentProtectModel.FK_PostComment_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postlike_Post" Association="EnvironmentProtectModel.FK_Postlike_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Postlike" EntitySet="Postlike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostCollect_Users" Association="EnvironmentProtectModel.FK_PostCollect_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PostCollect" EntitySet="PostCollect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Users" Association="EnvironmentProtectModel.FK_PostComment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postlike_Users" Association="EnvironmentProtectModel.FK_Postlike_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Postlike" EntitySet="Postlike" />
+          </AssociationSet>
+          <FunctionImport Name="Proc_AdmLoginByPassword" ReturnType="Collection(EnvironmentProtectModel.Proc_AdmLoginByPassword_Result)">
+            <Parameter Name="Admid" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Administrator" EntityType="EnvironmentProtectModel.Administrator" />
+          <EntitySet Name="Knowledge" EntityType="EnvironmentProtectModel.Knowledge" />
+          <AssociationSet Name="FK_Knowledge_administrator" Association="EnvironmentProtectModel.FK_Knowledge_administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="Knowledge" EntitySet="Knowledge" />
+          </AssociationSet>
+          <EntitySet Name="LifeType" EntityType="EnvironmentProtectModel.LifeType" />
+          <EntitySet Name="Life" EntityType="EnvironmentProtectModel.Life" />
+          <AssociationSet Name="FK_Life_Administrator" Association="EnvironmentProtectModel.FK_Life_Administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="Life" EntitySet="Life" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Life_LIfetype" Association="EnvironmentProtectModel.FK_Life_LIfetype">
+            <End Role="LifeType" EntitySet="LifeType" />
+            <End Role="Life" EntitySet="Life" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="likenum" Type="Int32" />
+          <Property Name="commentnum" Type="Int32" />
+          <Property Name="poststate" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="EnvironmentProtectModel.FK_Post_Users" FromRole="Post" ToRole="Users" />
+          <NavigationProperty Name="PostCollect" Relationship="EnvironmentProtectModel.FK_PostCollect_Post" FromRole="Post" ToRole="PostCollect" />
+          <NavigationProperty Name="PostComment" Relationship="EnvironmentProtectModel.FK_PostComment_Post" FromRole="Post" ToRole="PostComment" />
+          <NavigationProperty Name="Postlike" Relationship="EnvironmentProtectModel.FK_Postlike_Post" FromRole="Post" ToRole="Postlike" />
+        </EntityType>
+        <Association Name="FK_Post_Users">
+          <End Type="EnvironmentProtectModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PostCollect">
+          <Key>
+            <PropertyRef Name="collectid" />
+          </Key>
+          <Property Name="collectid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="postid" Type="Int32" Nullable="false" />
+          <Property Name="collecttime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Post" Relationship="EnvironmentProtectModel.FK_PostCollect_Post" FromRole="PostCollect" ToRole="Post" />
+          <NavigationProperty Name="Users" Relationship="EnvironmentProtectModel.FK_PostCollect_Users" FromRole="PostCollect" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PostComment">
+          <Key>
+            <PropertyRef Name="replyid" />
+          </Key>
+          <Property Name="replyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="postid" Type="Int32" Nullable="false" />
+          <Property Name="replytime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="replycontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="praisenum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="EnvironmentProtectModel.FK_PostComment_Post" FromRole="PostComment" ToRole="Post" />
+          <NavigationProperty Name="Users" Relationship="EnvironmentProtectModel.FK_PostComment_Users" FromRole="PostComment" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Postlike">
+          <Key>
+            <PropertyRef Name="postlikeid" />
+          </Key>
+          <Property Name="postlikeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="postid" Type="Int32" Nullable="false" />
+          <Property Name="likestate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="EnvironmentProtectModel.FK_Postlike_Post" FromRole="Postlike" ToRole="Post" />
+          <NavigationProperty Name="Users" Relationship="EnvironmentProtectModel.FK_Postlike_Users" FromRole="Postlike" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_PostCollect_Post">
+          <End Type="EnvironmentProtectModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.PostCollect" Role="PostCollect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="PostCollect">
+              <PropertyRef Name="postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Post">
+          <End Type="EnvironmentProtectModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.PostComment" Role="PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postlike_Post">
+          <End Type="EnvironmentProtectModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.Postlike" Role="Postlike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="Postlike">
+              <PropertyRef Name="postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostCollect_Users">
+          <End Type="EnvironmentProtectModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.PostCollect" Role="PostCollect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostCollect">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Users">
+          <End Type="EnvironmentProtectModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.PostComment" Role="PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postlike_Users">
+          <End Type="EnvironmentProtectModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.Postlike" Role="Postlike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Postlike">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Proc_AdmLoginByPassword_Result">
+          <Property Type="Int32" Name="Admid" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="Admid" />
+          </Key>
+          <Property Name="Admid" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Knowledge" Relationship="EnvironmentProtectModel.FK_Knowledge_administrator" FromRole="Administrator" ToRole="Knowledge" />
+          <NavigationProperty Name="Life" Relationship="EnvironmentProtectModel.FK_Life_Administrator" FromRole="Administrator" ToRole="Life" />
+        </EntityType>
+        <EntityType Name="Knowledge">
+          <Key>
+            <PropertyRef Name="knoid" />
+          </Key>
+          <Property Name="knoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="knowledgecontent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sorce" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="admid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="EnvironmentProtectModel.FK_Knowledge_administrator" FromRole="Knowledge" ToRole="Administrator" />
+          <Property Name="knopicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Knowledge_administrator">
+          <End Type="EnvironmentProtectModel.Administrator" Role="Administrator" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.Knowledge" Role="Knowledge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="Admid" />
+            </Principal>
+            <Dependent Role="Knowledge">
+              <PropertyRef Name="admid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LifeType">
+          <Key>
+            <PropertyRef Name="typeid" />
+          </Key>
+          <Property Name="typeid" Type="Int32" Nullable="false" />
+          <Property Name="typename" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Life" Relationship="EnvironmentProtectModel.FK_Life_LIfetype" FromRole="LifeType" ToRole="Life" />
+        </EntityType>
+        <EntityType Name="Life">
+          <Key>
+            <PropertyRef Name="lifeid" />
+          </Key>
+          <Property Name="lifeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeid" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lifecontent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="admid" Type="Int32" Nullable="false" />
+          <Property Name="cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="EnvironmentProtectModel.FK_Life_Administrator" FromRole="Life" ToRole="Administrator" />
+          <NavigationProperty Name="LifeType" Relationship="EnvironmentProtectModel.FK_Life_LIfetype" FromRole="Life" ToRole="LifeType" />
+        </EntityType>
+        <Association Name="FK_Life_Administrator">
+          <End Type="EnvironmentProtectModel.Administrator" Role="Administrator" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.Life" Role="Life" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="Admid" />
+            </Principal>
+            <Dependent Role="Life">
+              <PropertyRef Name="admid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Life_LIfetype">
+          <End Type="EnvironmentProtectModel.LifeType" Role="LifeType" Multiplicity="1" />
+          <End Type="EnvironmentProtectModel.Life" Role="Life" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LifeType">
+              <PropertyRef Name="typeid" />
+            </Principal>
+            <Dependent Role="Life">
+              <PropertyRef Name="typeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnvironmentProtectModelStoreContainer" CdmEntityContainer="EnvironmentProtectEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="poststate" ColumnName="poststate" />
+                <ScalarProperty Name="commentnum" ColumnName="commentnum" />
+                <ScalarProperty Name="likenum" ColumnName="likenum" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="postid" ColumnName="postid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostCollect">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.PostCollect">
+              <MappingFragment StoreEntitySet="PostCollect">
+                <ScalarProperty Name="collecttime" ColumnName="collecttime" />
+                <ScalarProperty Name="postid" ColumnName="postid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="collectid" ColumnName="collectid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostComment">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.PostComment">
+              <MappingFragment StoreEntitySet="PostComment">
+                <ScalarProperty Name="praisenum" ColumnName="praisenum" />
+                <ScalarProperty Name="replycontent" ColumnName="replycontent" />
+                <ScalarProperty Name="replytime" ColumnName="replytime" />
+                <ScalarProperty Name="postid" ColumnName="postid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="replyid" ColumnName="replyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postlike">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.Postlike">
+              <MappingFragment StoreEntitySet="Postlike">
+                <ScalarProperty Name="likestate" ColumnName="likestate" />
+                <ScalarProperty Name="postid" ColumnName="postid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="postlikeid" ColumnName="postlikeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Proc_AdmLoginByPassword" FunctionName="EnvironmentProtectModel.Store.Proc_AdmLoginByPassword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnvironmentProtectModel.Proc_AdmLoginByPassword_Result">
+                <ScalarProperty Name="Admid" ColumnName="Admid" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Administrator">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrator">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Admid" ColumnName="Admid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Knowledge">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.Knowledge">
+              <MappingFragment StoreEntitySet="Knowledge">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="knopicture" ColumnName="knopicture" />
+                <ScalarProperty Name="admid" ColumnName="admid" />
+                <ScalarProperty Name="sorce" ColumnName="sorce" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="knowledgecontent" ColumnName="knowledgecontent" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="knoid" ColumnName="knoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LifeType">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.LifeType">
+              <MappingFragment StoreEntitySet="LifeType">
+                <ScalarProperty Name="cover" ColumnName="cover" />
+                <ScalarProperty Name="typename" ColumnName="typename" />
+                <ScalarProperty Name="typeid" ColumnName="typeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Life">
+            <EntityTypeMapping TypeName="EnvironmentProtectModel.Life">
+              <MappingFragment StoreEntitySet="Life">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="cover" ColumnName="cover" />
+                <ScalarProperty Name="admid" ColumnName="admid" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="lifecontent" ColumnName="lifecontent" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="typeid" ColumnName="typeid" />
+                <ScalarProperty Name="lifeid" ColumnName="lifeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

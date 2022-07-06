@@ -1,0 +1,299 @@
+﻿.shicixq{
+    width:1300px;
+    margin-left:135px;
+    margin-top:20px;
+}
+.shicixqjieshao{
+    width:998px;
+    float:left;
+    margin-bottom: 20px;
+}
+.tuijian{
+    width:300px;
+    float:left;
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-bottom:none;
+}
+.shicitupian{
+    width:498px;
+    height:300px;
+    float:left;
+}
+.shicineirong{
+    width:458px;
+    height:300px;
+    float:left;
+}
+.shici-xq{
+    width:958px;
+    float:left;
+    margin:0px 20px 2px 20px;
+}
+.shici-xq a{
+    text-decoration: none;
+}
+.shici-xq1{
+    width:958px;
+    height:300px;
+    float:left;
+    background:#ffffff;
+
+}
+.shirenjianjie{
+    padding: 15px 40px;
+    background-color: #ffffff;
+    margin-top:20px;
+    float:left;
+    width:958px;
+    float:left;
+}
+.shirenjianjie p {
+    font-size: 22px;
+    font-family: "微软雅黑";
+}
+.shirenjs{
+    width:958px;
+}
+.shirentupian{
+    width:300px;
+    float: left;
+}
+.shirenjieshao{
+    width: 553px;
+    float: left;
+    margin-left: 20px;
+    margin-top:20px;
+}
+.shicibeijing{
+    padding: 15px 40px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    margin-top:20px;
+    float:left;
+}
+.shicifanyi{
+    padding: 15px 40px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    float:left;
+}
+.shicishangxi{
+    padding: 15px 40px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    float:left;
+}
+.shicibeijing p {
+    font-size: 22px;
+    font-family: "微软雅黑";
+}
+.shicishangxi p {
+    font-size: 22px;
+    font-family: "微软雅黑";
+}
+.shicifanyi p {
+    font-size: 22px;
+    font-family:"微软雅黑";
+}
+.shicibeijing a:last-child {
+    color: #19537d;
+}
+.shicibeijing a, .shicibeijing a:hover {
+    font-size: 18px;
+    font-family: monospace;
+    line-height: 2;
+}
+.shicifanyi a:last-child {
+    color: #19537d;
+}
+.shicifanyi a, .shicifanyi a:hover {
+    font-size: 18px;
+    font-family: monospace;
+    line-height: 2;
+}
+.shicishangxi a:last-child {
+    color: #19537d;
+}
+.shicishangxi a, .shicishangxi a:hover {
+    font-size: 18px;
+    font-family: monospace;
+    line-height: 2;
+}
+.pinglun{
+    width: 958px;
+    float:left;
+    background:#ffffff
+}
+.comment {
+    width: 918px;
+    margin:20px;
+}
+.u-title {
+    height: 30px;
+    border-bottom: 2px solid #c20c0c;
+}
+.u-title h3 {
+    font-weight: normal;
+    float: left;
+    margin-top: -6px;
+}
+.u-title-1 h3 {
+    font-size: 20px;
+    line-height: 35px;
+}
+.f-ff2 {
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-weight: 600;
+}
+.u-title .sub {
+    float: left;
+    margin: 13px 0 0 10px;
+}
+.s-fc3, a.s-fc3:hover {
+    color: #666;
+}
+.m-cmmt {
+    margin-top: 20px;
+}
+.m-cmmt .cmmts .cntwrap {
+    margin-left: 60px;
+}
+.m-cmmt .iptarea {
+    margin-bottom: 20px;
+}
+.m-cmmt .head, .m-cmmt .head img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: -100px;
+}
+.m-cmmt .iptarea .m-cmmtipt {
+    margin-left: 62px;
+}
+.m-cmmt .cmmts .cntwrap .s-fc7 {
+    margin-right: 5px;
+    color: green;
+}
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+div.holder-parent {
+    position: relative;
+    zoom: 1;
+}
+.u-txtwrap {
+    padding-right: 14px;
+}
+.m-cmmtipt .area {
+    height: 50px;
+    display: block;
+    max-width: 1000px;
+}
+textarea.u-txt, div.u-txt {
+    width: 100%;
+    margin-right: -20px;
+}
+.u-txt {
+    font-size: 12px;
+    margin: 0;
+    padding: 5px 6px 6px;
+    border: 1px solid #cdcdcd;
+    border-radius: 2px;
+    line-height: 19px;
+    box-sizing: content-box;
+}
+textarea {
+    resize: none;
+    overflow: auto;
+}
+textarea {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
+.m-cmmtipt .btns {
+    clear: both;
+    padding-top: 10px;
+}
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+.m-cmmtipt .btns .icn {
+    float: left;
+    margin: 0px 10px 0 0;
+    cursor: pointer;
+}
+.u-icn-36 {
+    width: 18px;
+    height: 18px;
+    background-position: -40px -490px;
+}
+em, i {
+    font-style: italic;
+}
+.m-cmmtipt .btns .btn {
+    float: right;
+    border: none;
+    border-radius: 3px;
+    background-color: #118cd6;
+    cursor: pointer;
+    padding: 0px 10px;
+}
+.u-btn-1 {
+    width: 46px;
+    height: 25px;
+    background-position: -84px -64px;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+}
+.m-cmmtipt .btns .zs {
+    float: right;
+    margin-right: 10px;
+    line-height: 25px;
+    color: grey;
+}
+.u-hd4 {
+    position: relative;
+    top: 1px;
+    height: 30px;
+    border-bottom: 1px solid #cfcfcf;
+    margin-bottom: 0px;
+    color: #000;
+}
+.m-cmmt .cmmts .itm {
+    padding: 15px 0;
+    border-top: 1px dotted #ccc;
+}
+.m-cmmt .cmmts .cntwrap .f-brk, .m-cmmt .cmmts .cnt.f-brk {
+    word-break: break-word;
+}
+.m-cmmt .cmmts .cnt {
+    width: 100%;
+    overflow: hidden;
+    line-height: 20px;
+}
+.m-cmmt .cmmts div.rp {
+    margin-top: 15px;
+    text-align: right;
+}
+#more {
+    float: right;
+    color: green;
+    font-size: 12px;
+    cursor: pointer;
+}
+.article .content p {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0 0 14px;
+    word-break: break-all;
+    color: rgb(102, 102, 102);
+}
+.delete {
+    float: left;
+    color: #14b6ee;
+    cursor: pointer;
+}
+

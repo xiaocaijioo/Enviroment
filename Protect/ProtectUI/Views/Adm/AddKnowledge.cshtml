@@ -1,0 +1,124 @@
+﻿@model Model.Knowledge
+
+@{
+    Layout = null;
+}
+
+<style>
+    .formcontent {
+        border: 2px solid grey;
+        width: 760px;
+        padding-top: 30px;
+        border-radius: 2px;
+    }
+</style>
+
+<div>
+    <div style="padding-top:5px;padding-bottom:10px;">
+        <label style="width:200px;font-size:15px;font-weight:600">环保知识&nbsp;&rang;&nbsp;上传环保知识</label>
+    </div>
+    @using (Ajax.BeginForm("AddNewKnowledge", "Adm", new AjaxOptions() { HttpMethod = "post", OnSuccess = "submitSuc" }, new { @id = "form", @class = "layui-form formcontent" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">文章标题</label>
+            <div class="layui-input-block" style="padding-left:30px;">
+                <input type="text" name="title" required placeholder="请输入文章标题" class="layui-input" style="width:320px;">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">文章内容</label>
+            <div class="layui-input-inline" style="width:600px;padding-left:10px;">
+                @Html.TextAreaFor(model => model.knowledgecontent, new { @class = "ckeditor" })
+                @Html.ValidationMessageFor(model => model.knowledgecontent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">文章状态</label>
+            <div class="layui-input-block" style="padding-left:10px;float:left;margin-left:0px;">
+                <input type="radio" name="workstate" value="1" title="上架" checked>
+                <input type="radio" name="workstate" value="0" title="下架">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 100px;">文章作品封面图片</label>
+            <div class="layui-input-inline uploadHeadImage" style="padding-left:10px;">
+                <div class="layui-upload-drag" id="headImg">
+                    <i class="layui-icon upload-pic"></i>
+                    <p>点击上传图片，或将图片拖拽到此处</p>
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img headImage" src="~/images/upImg.png" id="upimg" style="width:140px;height:140px;">
+                    <p id="demoText"></p>
+                    <input id="imgsrc" type="hidden" name="cover" />
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="text-align:center;">
+                <button class="layui-btn" type="submit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/Scripts/ckeditor/config.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="~/Content/layui-v2.5.6/layui/layui.all.js"></script>
+<script type="text/javascript">
+    function submitSuc(data) {
+        if (data == "suc") {
+            document.getElementById("form").reset();
+            layui.layer.msg("新增文章成功", {
+                icon: 1
+            });
+        }
+        else {
+            layui.layer.msg("新增文章失败", {
+                icon: 5
+            });
+        }
+    }
+    layui.use(["jquery", "upload", "form", "layer"], function () {
+        var $ = layui.$,
+            element = layui.element,
+            layer = layui.layer,
+            upload = layui.upload
+        //拖拽上传
+        var uploadInst = upload.render({
+            elem: '#headImg'
+            , url: '/Adm/UpWorkImg'  //执行文件上传控制器方法
+            , size: 500
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#upimg').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code == 500) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+                //打印后台传回的地址: 把地址放入一个隐藏的input中, 和表单一起提交到后台, 此处略..
+                var demoText = $('#demoText');
+                demoText.html('<span style="color:green;">图片上传成功!</span>');
+                var img = document.getElementById("imgsrc");
+                img.value = res.url;
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+</script>
+

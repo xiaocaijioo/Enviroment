@@ -1,0 +1,97 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        /*登录容器*/
+        .login-container {
+            width: 400px;
+            height: 450px;
+            position: absolute;
+            border: 1px solid #191818;
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+        }
+        /*logo*/
+        .logo-cantainer {
+            margin-left: 100px;
+        }
+
+        .loginlogo {
+            width: 200px;
+            height: 100px;
+        }
+
+        /*输入框*/
+        .form-item {
+            position: relative;
+            width: 300px;
+            height: 60px;
+            margin-left: 45px;
+            text-align: left;
+            font-size: 18px;
+        }
+        /*输入框默认字体*/
+        input::placeholder {
+            font-size: 14px;
+        }
+
+        /*登录按钮*/
+        .loginbtn {
+            margin-left: 40%;
+        }
+    </style>
+    <script type="text/javascript">
+        function mycheck() {
+            if (account.value == "") {
+                alert("账户不能为空，请输入用户名！")
+                form.accountf.focus();
+                return RedirectToAction("Login", "Adm");
+            }
+            if (password.value == "") {
+                alert("密码不能为空，请输入用户名！")
+                form.password.focus();
+                return RedirectToAction("Login", "Adm");
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login">
+            <div class="logo-cantainer">
+                <img src="~/image/logo.png" class="loginlogo" />
+            </div>
+            <hr />
+            <form class="loginform-container" id="loginform" name="loginform" method="post" action="Login" autocomplete="off" onsubmit="return checked()">
+                <div class="form-item" id="idInputLine">
+                    <span>账   号  </span>
+                    <input type="text" name="Admid" id="Admid" placeholder="请输入账号" value="" />
+                </div>
+                <div class="form-item" id="pwdInputLine">
+                    <span>密   码  </span>
+                    <input type="password" name="Password" id="Password" placeholder="请输入您的密码" value="" />
+                </div>
+                <div class="form-item">
+                    <input type="submit" name="submit" value="登录" onclick="mycheck()" class="loginbtn" />
+                </div>
+                <p>欢迎登录管理员后台系统</p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

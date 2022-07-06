@@ -1,0 +1,188 @@
+﻿
+    <style>
+        .layui-table-cell {
+            height: 60px !important;
+            line-height: 60px !important;
+        }
+    </style>
+    <div style="padding-top:5px;">
+        <label style="width:200px;font-size:15px;font-weight:600">评论管理&nbsp;&rang;&nbsp;系统帖子评论库</label>
+    </div>
+    <table class="layui-hide" id="demo" lay-filter="tableData"></table>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon layui-icon-search"></i>查看</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="close"><i class="layui-icon layui-icon-down"></i>删除</a>
+    </script>
+    <script type="text/html" id="toolbar">
+        <input class="text" style="height:30px;width:168px;padding-left:5px;" name="" id="id" placeholder="请输入查找帖子评论ID">
+        <a id="search" lay-filter="" style="position: absolute;left: 144px;cursor:pointer" lay-event="search">
+            <i class="layui-icon layui-icon-search" style="background:#fff;padding:5px;"></i>
+        </a>
+    </script>
+
+    <script type="text/javascript" src="~/Content/layui-v2.5.6/layui/layui.all.js"></script>
+    <script>
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
+        var laydate = layui.laydate //日期
+        , laypage = layui.laypage //分页
+        , layer = layui.layer //弹层
+        , table = layui.table //表格
+        , element = layui.element //元素操作
+
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#demo'
+          , id: 'tableData'
+          , url: '/Adm/SystemPostComments' //数据接口
+          , title: '帖子评论表'
+          , page: true //开启分页
+          , limit: 6
+          , method: 'get'  //提交方式
+          , toolbar: '#toolbar' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+          , cols: [[ //表头
+            { type: 'checkbox', fixed: 'left' }
+            , { field: 'replyid', title: '评论ID', sort: true, fixed: 'left' }
+            , { field: 'userid', title: '用户名', sort: true, templet: '<div>{{ToUserName(d.userid)}}</div>' }
+            , { field: 'postid', title: '帖子名', sort: true, templet: '<div>{{ToPostName(d.postid)}}</div>' }
+            , { field: 'replytime', title: '发布时间', templet: '<div>{{ createTime(d.replytime)}}</div>', sort: true }
+            , { fixed: 'right', title: '操作', width: 250, align: 'center', toolbar: '#barDemo', sort: true }
+          ]]
+        });
+        //回车查询
+        $('#id').keydown(function (e) {
+            if (e.keyCode == 13) {
+                $('#search').trigger("click");
+            }
+        });
+        //监听头工具栏事件
+        table.on('toolbar(tableData)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id)
+            , data = checkStatus.data; //获取选中的数据
+            switch (obj.event) {
+                case 'search':
+                    layer.msg('查询结果');
+                    var send_id = $('#id').val();
+                    table.reload('tableData', {
+                        method: 'get'
+                        , url: '/Adm/SearchPostComment'
+                        , where: {
+                            id: send_id,
+                        }
+                        , page: {
+                            curr: 1
+                        }
+                    });
+                    break;
+            };
+        });
+
+        //监听行工具事件
+        table.on('tool(tableData)', function (obj) {
+            var data = obj.data;
+            json = JSON.stringify(data);
+            switch (obj.event) {
+                case 'detail':
+                    var index = layer.open({
+                        type: 2,
+                        title: "帖子评论详情",
+                        area: ['30%', '75%'],
+                        fix: false,
+                        maxmin: true,
+                        shadeClose: true,
+                        shade: 0.4,
+                        skin: 'layui-layer-rim',
+                        content: ["/Admin/PostCommentDetail/" + data.replyid],
+                    });
+                    break;
+                case 'close':
+                    var Index = layer.confirm('确认从平台删除ID为:' + data.replyid + "的帖子评论吗?", function (Index) {
+                        $.ajax({
+                            url: ["/Admin/ClosePostComment/" + data.replyid],
+                            type: "post",
+                            success: function (suc) {
+                                if (suc == "suc") {
+                                    layer.close(Index);
+                                    layer.msg("删除成功", {
+                                        icon: 1
+                                    });
+                                    table.reload('tableData', {
+                                        method: 'post'
+                                        , url: '/Admin/SystemPostComments'
+                                        , page: {
+                                            curr: $(".layui-laypage-em").next().html() //重载当前页
+                                        }
+                                    });
+                                } else {
+                                    layer.msg("删除失败", {
+                                        icon: 5
+                                    });
+                                }
+                            }
+                        });
+                        layer.close(Index);
+                    });
+                    break;
+            }
+        });
+
+        //分页
+        laypage.render({
+            elem: 'pageDemo' //分页容器的id
+          , count: 100 //总页数
+          , skin: '#1E9FFF' //自定义选中色值
+            //,skip: true //开启跳页
+          , jump: function (obj, first) {
+              if (!first) {
+                  layer.msg('第' + obj.curr + '页', { offset: 'b' });
+              }
+          }
+        });
+    });
+
+  //将userid变成username，应用template模板
+  function ToUserName(userid) {
+      var id = userid;
+      var title;
+      $.ajax({
+          url: '/Admin/GetUsersJson',//你的后台请求路径
+          dataType: 'json',
+          async: false,//同步
+          success: function (data) {
+              $.each(data.data, function (i, item) {
+                  if (item.userid == id) {
+                      title = item.username;
+                  }
+              });
+          }
+      });
+      return title;
+  };
+
+  //将postid变成postname，应用template模板
+  function ToPostName(postid) {
+      var id = postid;
+      var title;
+      $.ajax({
+          url: '/Admin/GetPostsJson',//你的后台请求路径
+          dataType: 'json',
+          async: false,//同步
+          success: function (data) {
+              $.each(data.data, function (i, item) {
+                  if (item.postid == id) {
+                      title = item.postname;
+                  }
+              });
+          }
+      });
+      return title;
+  };
+    </script>
+
+
+
+
+
+
+

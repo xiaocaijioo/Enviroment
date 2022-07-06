@@ -1,0 +1,95 @@
+﻿.ShoppingIndex{
+    border: 0px;
+    margin-top: 20px;
+    padding: 0;
+    height:420px;
+    font-size: 12px;
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+    border-bottom:3px ridge #ff0000;
+}
+.rexiaoproduct{
+    width:1200px;
+    height:610px;
+    float:left;
+    margin-left:160px;
+    margin-top:20px;
+}
+.rexiaotuijian{
+    width:1200px;
+    height:40px;
+    background:#d38248;
+    border-top:2px ridge #02854c;
+}
+.rexiao{
+    width:1200px;
+    height:560px;
+    float:left;
+    margin-top:10px;
+}
+.rexiaoping{
+    width:240px;
+    height:280px;
+    float:left;
+}
+.rexiaoping a{
+    text-decoration:none;
+}
+.rexiaoping img:hover{
+    transform: scale(0.9);
+}
+.rexiaoping img{
+    transition: all 0.3s ease-in-out;
+}
+.jiage{
+    width:240px;
+    height:20px;
+    float:left;
+    margin-top:10px;
+}
+.shangpingname{
+    width:240px;
+    height:40px;
+    float:left;
+}
+.shangpingfenlei{
+    width:1200px;
+    height:700px;
+    margin-top:10px;
+    margin-left:160px;
+    float:left;
+    margin-bottom:40px;
+}
+.shangping{
+    width:1200px;
+    height:40px;
+    background:#ff0000;
+    border:2px ridge #02854c;
+}
+.sptype{
+    padding: 5px;
+    border-bottom:2px ridge #00ff21;
+    border-left:2px ridge #00ff21;
+    border-right:2px ridge #00ff21;
+}
+.sptype b{
+    float: left;
+    font-weight: 400;
+    margin-top: 3px;
+    font-size: 16px;
+}
+.sptype .type .on, .sptype .type a:hover{
+    background: #ff0000;
+    color: #fff;
+    border-radius: 4px;
+}
+.sptype .type a{
+    margin: 0 5px 5px 5px;
+    padding: 3px 10px;
+    color: #555;
+    float: left;
+    font-size: 16px;
+    text-decoration:none;
+}
+.sptype .type{
+    overflow: hidden;
+}

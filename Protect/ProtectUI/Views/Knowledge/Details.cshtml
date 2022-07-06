@@ -1,0 +1,84 @@
+﻿@model Model.Knowledge
+
+@{
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+<style>
+    /*帖子大盒子*/
+    .taolun-container {
+        font-size: 15px;
+        margin: 20px;
+        margin-left: 5%;
+        padding: 20px;
+        width: 800px;
+        background-color: white;
+        box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    }
+    /*帖子评论区*/
+    .reply-container {
+        font-size: 15px;
+        margin: 20px;
+        margin-left: 5%;
+        padding: 20px;
+        width: 800px;
+        background-color: white;
+        box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .shequ-title {
+    }
+
+    .shequ-jianjie {
+    }
+
+    .taolun-details {
+        /*background-color:red;*/
+        width: 750px;
+        padding: 20px;
+    }
+
+        .taolun-details p img {
+            width: 700px !important;
+            height: auto !important;
+            object-fit: cover;
+        }
+
+    /*输入评论的文本框盒子*/
+    .inputcomment {
+        padding: 10px;
+    }
+
+    .action-btn {
+    }
+</style>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<body>
+    <div class="taolun-container">
+        <div class="taolun-title">
+            <p style="font-size:25px;font-weight:bold;color:darkslategray;">
+                &nbsp;@Model.title
+            </p>
+        </div>
+        <div class="taolun-jianjie">
+            <img src="" style="height:70px;width:70px;float:left;" alt="头像" />
+            <span>来自：@Model.sorce<a></a>&nbsp;&nbsp;@Model.addtime</span>
+        </div>
+        <div class="taolun-details">
+            <img src="@Model.knopicture" />
+            @Html.Raw(@Model.knowledgecontent)
+        </div>
+        <hr />
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.knoid }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+
+    </div>
+  
+</body>
+
+
+

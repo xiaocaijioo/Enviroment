@@ -1,0 +1,81 @@
+﻿@model Model.Life
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Life</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lifecontent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lifecontent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addtime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cover)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Administrator.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrator.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LifeType.typename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LifeType.typename)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

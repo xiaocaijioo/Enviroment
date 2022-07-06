@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Model.PostComment>
+
+@{
+    Layout = null;
+}
+<style>
+    
+    .cantainer{
+    }
+    .userimg-box {
+        margin:5px;
+        float:left;
+    }
+    .conten-box{
+        margin:5px;
+        border-bottom:0.5px solid black;
+        height:100px;
+    }
+    .replycontent{
+        padding:3px;
+    }
+</style>
+<div class="reply-display" name="Div1">
+    @foreach(var item in Model)
+    {
+    <div class="cantainer">
+        <div class="userimg-box">
+            <img src="" style="height:70px;width:70px;"  alt=""/>
+        </div>
+        <div class="conten-box">
+            <p style="font-size:14px;opacity:0.6;"><a href="#">@item.Users.Username</a>&nbsp;&nbsp;&nbsp;@item.replytime.ToString()</p>
+            <div class="replycontent">
+                @item.replycontent
+            </div>
+            <div class="delect">
+                @if (Convert.ToInt32(Session["userid"]) == item.Users.Id)
+                {
+                    <div></div>
+                }
+            </div>
+        </div>
+    </div>
+    }
+</div>

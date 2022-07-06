@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Model.Knowledge>
+
+@{
+    ViewBag.Title = "Knowledge";
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+<div class="all-cantainer">
+    <span>环保知识</span>
+    <hr />
+    <div class="kno-box">
+        @foreach (var item in Model)
+        {
+            <div class="box-left" style="float:left">
+                @item.knopicture
+            </div>
+            <div class="box-right">
+                @item.title
+                <p style="overflow:hidden">@item.knowledgecontent</p>
+                <p>@item.addtime|阅读更多》</p>
+            </div>
+        }
+    </div>
+</div>

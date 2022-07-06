@@ -1,0 +1,272 @@
+﻿body{
+    border: 0px;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+}
+.top-line{
+    width: 100%;
+    height: 4px;
+    background: #917665;
+    display: block;
+}
+.top-bg {
+    width: 100%;
+    height: 35px;
+    background: #efefef none repeat scroll 0% 0%;
+    float:left;
+}
+.top-bg .top-center {
+    width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.top-left{
+    float: left;
+    line-height: 35px;
+    font-family: "宋体";
+    width:auto;
+    margin-left:100px;
+}
+.weater{
+    float: left;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.top-right {
+    float: right;
+    width: auto;
+    margin-right:100px;
+}
+.top-right a{
+    text-decoration:none;
+}
+.top-bg .top-right li {
+    float: left;
+    font-size:15px;
+    font-family:"微软雅黑";
+    margin-right: 10px;
+    line-height: 32px;
+}
+ul, li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.clear {
+    clear: both;
+    height: 0px;
+    line-height: 0px;
+    font-size: 0px;
+    overflow: hidden;
+}
+.headz-bg {
+    background-image: url('../../images/bujuye/head.jpg');
+    background-position-x: center;
+    background-position-y: center;
+    background-size: initial;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    width: 100%;
+    height: 139px;
+    border-top: 2px solid #e7e7e7;
+    border-bottom: 4px solid #5b1312;
+    float:left;
+}
+.headz-center {
+    width: 1200px;
+    margin: auto;
+    height:139px;
+    float:left;
+}
+.head-logo {
+    margin-left: 30px;
+    margin-top: -2px;
+}
+img {
+    border: 0px;
+}
+input, a, img {
+    outline: none;
+}
+
+.headz-img{
+    margin-left: 240px;
+    margin-top: 2px;
+    width:160px;
+    height:139px;
+    float:left;
+}
+.headz-img1{
+    margin-left: 50px;
+    margin-top: 0px;
+    width:150px;
+    height:139px;
+    float:left;
+}
+.head-logo1 {
+    margin-left: 0px;
+    margin-top: 20px;
+}
+.headz-input{
+    margin-left: 100px;
+    margin-top: 0px;
+    width:250px;
+    height:120px;
+    float:left;
+}
+.input{
+    margin-left: 0px;
+    margin-top: 30px;
+    width:250px;
+    height:35px;
+}
+.headz-sousuo{
+    margin-left: 0px;
+    margin-top: 0px;
+    width:50px;
+    height:120px;
+    float:left;
+}
+.sousuo {
+    margin-left: 0px;
+    margin-top: 30px;
+    width: 50px;
+    height: 35px;
+}
+.headz-center .r-nav {
+    float:left;
+    margin-left:650px;
+    background-image: url('../../images/bujuye/download.png');
+    width: 730px;
+    height: 91px;
+    margin-top:-120px;
+    display: inline-block;
+}
+.r-nav span {
+    margin: 15px 5px;
+    display: block;
+}
+span{
+    border: 0;
+    padding: 0;
+    font-family: Microsoft yahei,Arial,宋体;
+}
+.headz-center .r-nav a {
+    font-size: 14px;
+    color: #391a0b;
+    width: 70px;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 5px;
+}
+a{
+    text-decoration: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-family: Microsoft yahei,Arial,宋体;
+}
+.nav {
+    width: 100%;
+    height: 51px;
+    background-color: #1a1a1a;
+    margin-top:-5px;
+    float:left;
+}
+.nav ul {
+    width: 1200px;
+    margin: 0 auto;
+}
+.clearfix {
+    zoom: 1;
+}
+.nav .news_li {
+    position: relative;
+}
+.nav ul li {
+    float: left;
+    width: 120px;
+}
+li {
+    list-style: none;
+}
+.nav .news_box {
+    border: 1px solid #272725;
+    width: 120px;
+    border-top: none;
+    background-color: #fff; 
+    position: absolute;
+    z-index: 10;
+}
+.nav ul li a {
+    display: block;
+    color: #fff;
+    line-height: 51px;
+    text-align: center;
+    text-decoration:none;
+}
+.nav .news_box a {
+    color: #000;
+    text-decoration:none;
+}
+ul{
+    padding: 0;
+    font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    font-size: 14px;
+}
+li{
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    font-size: 14px;
+}
+.nav ul li a:hover {
+    background-color:#ae1010;
+    text-decoration:none;
+}
+
+.dibu {
+    width: 100%;
+    height: 145px;
+    background:#1a1a1a;
+    float:left;
+}
+.dibu p {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 25px;
+}
+.footer img {
+    display: block;
+    width: 133px;
+    height: 51px;
+    margin: 0 auto;
+    padding-top: 35px;
+}
+.shitu{
+    width:100%;
+    float:left;
+    background: #efefef none repeat scroll 0% 0%;
+}
+.dropdown-menu a:hover {
+    color:#ff0000;
+    text-decoration:none;
+}
+.shopcart{
+    float: left;
+    margin-left: 50px;
+    margin-top: 20px;
+    position: relative;
+}
+.shopcart a{
+    text-decoration: none;
+    color: #000;

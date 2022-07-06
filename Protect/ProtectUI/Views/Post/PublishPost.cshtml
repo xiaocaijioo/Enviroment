@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "PublishPost";
+    Layout = "~/Views/Shared/_NoTopLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckeditor/config.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+<style>
+    .box {
+        padding-left:280px;
+        display:flex;
+        box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    }
+</style>
+<div class="box">
+    @using (Ajax.BeginForm("PublishPost", "Post", null, new AjaxOptions
+    {
+        HttpMethod = "post",
+        OnSuccess = "Fasuccess",
+    }, new { enctype = "multipart/form-date" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="">
+             <p style="font-weight:600;font-size:28px;color:darkslategray;text-align:center;">用户发帖页面</p>
+             <hr style="border:1.3px solid black;opacity:0.9;"/>
+             <input type="text" name="title" id="title" placeholder="请输入文章标题" style="width:200px;height:35px;margin-bottom:10px;"/><br />
+             <div >
+             <textarea id="editor" name="details" rows="10" cols="70"></textarea>
+             </div>
+            <br />
+            <input type="submit" value="提交" class="btn btn-success"/>
+            <script>CKEDITOR.replace('editor');</script>
+        </div>
+    }
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+
+    function Fasuccess(date) {
+        if (date == "success") {
+            alert("成功！");
+            window.location.href = '/Post/Index';
+        }
+        else {
+            alert("失败！");
+        }
+    }
+</script>
+
+
+
